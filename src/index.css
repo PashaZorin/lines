@@ -15,16 +15,11 @@ code {
 
 .canvas__conteiner{
   height: 100vh;
+  position: relative;
  
 
 }
-span{
-  position: absolute;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #000;
-}
+
 .canvas{
   border: 1px solid red;
   margin: 10 auto;
