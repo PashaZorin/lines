@@ -10,6 +10,8 @@ const createElement = (x1, y1, x2, y2) => {
 
 const Canvas = () => {
   const [elements, setElements] = useState([]);
+  //const [newElements, setNewElements] = useState([]);
+
   const [stateDots, setStateDots] = useState([]);
   const [moveDots, setMoveDots] = useState({});
   const [driwing, setDriwing] = useState(false);
@@ -19,13 +21,14 @@ const Canvas = () => {
   useLayoutEffect(() => {
     if (context) {
       context.clearRect(0, 0, canvas.width, canvas.height);
-
       const roughCanvas = rough.canvas(canvas);
-      elements.forEach(({ roughElement }) => {
-        roughElement.options.stroke = "grey";
-        roughElement.options.roughness = 0;
-        roughElement.options.strokeWidth = 2;
-        return roughCanvas.draw(roughElement);
+      elements?.forEach(({ roughElement }) => {
+        if (roughElement) {
+          roughElement.options.stroke = "grey";
+          roughElement.options.roughness = 0;
+          roughElement.options.strokeWidth = 2;
+          return roughCanvas.draw(roughElement);
+        }
       });
     }
 
@@ -106,6 +109,15 @@ const Canvas = () => {
       }
     }
   };
+  //const move = (x, y) => {
+  //  context.beginPath();
+  //  context.lineWidth = 2;
+  //  context.fillStyle = "red";
+  //  context.strokeStyle = "red";
+  //  context.fill();
+  //  context.arc(x, y, 2, Math.PI * 2, false);
+  //  context.stroke();
+  //};
   const lineSegmentsIntersect = (x1, y1, x2, y2, x3, y3, x4, y4) => {
     const a_dx = x2 - x1;
     const a_dy = y2 - y1;
@@ -126,10 +138,22 @@ const Canvas = () => {
       return;
     }
   };
+
   const clearElements = () => {
+    //const deleteEl = setInterval(() => {
+    //  if (elements[0].x1 > 0) {
+    //    const newElements = elements.map((e) => {
+    //      return { ...e, x1: e.x1 - e.x1 * 0.5, x2: e.x2 - e.x2 * 0.5 };
+    //    });
+    //    console.log("newElements", newElements);
+    //    setElements([...newElements, {}]);
+    //  }
+    //}, 500);
+    //setTimeout(() => clearInterval(deleteEl), 1000);
+
     setElements([]);
-    setMoveDots({});
     setStateDots([]);
+    setMoveDots({});
   };
   return (
     <div className="canvas__conteiner">
