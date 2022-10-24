@@ -18,11 +18,7 @@ const Canvas = () => {
   const canvas_Ref = useRef(null);
   const canvas = canvas_Ref.current;
   const context = canvas?.getContext("2d");
-  useEffect(() => {
-    //canvas.width = window.innerWidth;
-    //canvas.width = window.innerWidth;
-    console.log(canvas);
-  });
+
   useEffect(() => {
     if (context) {
       context.clearRect(0, 0, canvas.width, canvas.height);
@@ -42,6 +38,7 @@ const Canvas = () => {
     };
     document.addEventListener("contextmenu", prDef);
     return document.addEventListener("contextmenu", prDef);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [elements]);
 
   const handleMouseDown = (event) => {
@@ -82,6 +79,7 @@ const Canvas = () => {
         context.stroke();
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [stateDots, moveDots]);
 
   const handleMouseMove = (event) => {
