@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import rough from "roughjs/bundled/rough.esm";
 
 const generator = rough.generator();
@@ -18,7 +18,12 @@ const Canvas = () => {
   const canvas_Ref = useRef(null);
   const canvas = canvas_Ref.current;
   const context = canvas?.getContext("2d");
-  useLayoutEffect(() => {
+  useEffect(() => {
+    //canvas.width = window.innerWidth;
+    //canvas.width = window.innerWidth;
+    console.log(canvas);
+  });
+  useEffect(() => {
     if (context) {
       context.clearRect(0, 0, canvas.width, canvas.height);
       const roughCanvas = rough.canvas(canvas);
@@ -169,7 +174,9 @@ const Canvas = () => {
       >
         Canvas
       </canvas>
-      <button onClick={clearElements}>clear</button>
+      <button className="canvas__button" onClick={clearElements}>
+        collapse lines
+      </button>
     </div>
   );
 };

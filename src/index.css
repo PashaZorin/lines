@@ -14,14 +14,22 @@ code {
 
 
 .canvas__conteiner{
-  height: 100vh;
-  position: relative;
- 
 
+  width: 600px;
+  position: relative;
+}
+.canvas__button{
+ color: red;
+ padding: 5px;
+ border: 1px solid red;
+ margin-top: 10px;
 }
 
 .canvas{
   border: 1px solid red;
-  margin: 10 auto;
+display: block;
+
+
+
 
 }
